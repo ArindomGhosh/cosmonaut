@@ -25,7 +25,8 @@ extension KoinApplication {
 
 extension KoinApplication{
     private static let keyPaths: [PartialKeyPath<Koin>]=[
-        \.getLaunchesUseCase
+        \.getLaunchesUseCase,
+        \.mainActivityPresenter
     ]
     
     static func inject<T>()-> T{

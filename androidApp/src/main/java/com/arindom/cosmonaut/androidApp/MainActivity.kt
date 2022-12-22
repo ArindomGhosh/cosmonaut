@@ -16,6 +16,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.arindom.cosmonaut.presentation.Intent
+import com.arindom.cosmonaut.presentation.MainActivityPresenter
+import com.arindom.cosmonaut.presentation.SideEffect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Composable
@@ -58,7 +61,7 @@ fun MyApplicationTheme(
 }
 
 class MainActivity : ComponentActivity() {
-    private val _mainVm: MainViewModel by viewModel()
+    private val _mainVm: MainActivityPresenter by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -67,12 +70,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    var text by remember { mutableStateOf("") }
-                    val scope = rememberCoroutineScope()
                     LaunchedEffect(key1 = true) {
-                        _mainVm.getAllLaunches()
+                        _mainVm.postIntent(Intent.GetAllLaunches)
                     }
-                    val uiState by _mainVm.mainUiState.collectAsState()
+                    val uiState by _mainVm.states.collectAsState()
+                    val sideEffect by _mainVm.sideEffects
+                        .collectAsState(initial = null)
+                    HandleSideEffect(sideEffect = sideEffect)
                     if (uiState.launches.isNotEmpty()) {
                         Greeting(uiState.launches.first().missionName)
                     }
@@ -83,7 +87,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(text: String) {
+fun HandleSideEffect(sideEffect: SideEffect?) {
+    when (val localSideEffect = remember { sideEffect }) {
+        is SideEffect.ErrorAlert -> {
+            println(localSideEffect.uiError.errorMessage)
+        }
+        null -> {
+            //do noting
+        }
+    }
+}
+
+@Composable
+fun Greeting(
+    text: String,
+) {
     Text(text = text)
 }
 

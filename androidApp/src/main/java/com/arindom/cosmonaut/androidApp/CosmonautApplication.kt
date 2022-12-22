@@ -2,7 +2,7 @@ package com.arindom.cosmonaut.androidApp
 
 import android.app.Application
 import com.arindom.cosmonaut.BuildConfig
-import com.arindom.cosmonaut.androidApp.di.androidModule
+import com.arindom.cosmonaut.androidApp.di.viewModelsModule
 import com.arindom.cosmonaut.di.initKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,7 +19,7 @@ class CosmonautApplication : Application() {
             androidLogger(level = if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@CosmonautApplication)
             modules(
-                androidModule
+                viewModelsModule
             )
         }
     }
