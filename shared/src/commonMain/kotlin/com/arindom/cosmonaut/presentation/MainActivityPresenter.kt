@@ -34,7 +34,12 @@ class MainActivityPresenter(
                         )
                     }
                 }
-                is DomainWrapper.Error -> postSideEffect(SideEffect.ErrorAlert(this@with.uiError))
+                is DomainWrapper.Error -> {
+                    reduce {
+                        copy(loading = false)
+                    }
+                    postSideEffect(SideEffect.ErrorAlert(this@with.uiError))
+                }
             }
         }
     }

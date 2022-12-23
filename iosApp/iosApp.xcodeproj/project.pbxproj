@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		964396772955C70500A95717 /* CombineAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964396762955C70500A95717 /* CombineAdapters.swift */; };
 		9669377929502BD00055A3A1 /* Koin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9669377829502BD00055A3A1 /* Koin.swift */; };
 		96EEDAAA295586C80008555F /* FlowUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEDAA9295586C80008555F /* FlowUtil.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		964396762955C70500A95717 /* CombineAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineAdapters.swift; sourceTree = "<group>"; };
 		9669377829502BD00055A3A1 /* Koin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Koin.swift; sourceTree = "<group>"; };
 		96EEDAA9295586C80008555F /* FlowUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				96EEDAA9295586C80008555F /* FlowUtil.swift */,
+				964396762955C70500A95717 /* CombineAdapters.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				96EEDAAA295586C80008555F /* FlowUtil.swift in Sources */,
+				964396772955C70500A95717 /* CombineAdapters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
