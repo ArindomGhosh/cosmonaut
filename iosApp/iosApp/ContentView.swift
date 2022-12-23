@@ -15,52 +15,26 @@ extension ContentView {
     class ViewModel: ObservableObject {
         
         @LazyKoin
-        private var getLaunchesUseCase : GetLaunchesUseCase
-        
-        @LazyKoin
         private var mainActivityPresenter: MainActivityPresenter
         
         @Published var text = "Loading..."
-        init() {
-            //DomainWrapper<List<RocketLaunchEntity>>
-            mainActivityPresenter.postIntent(intent: IntentGetAllLaunches())
         
-//            mainActivityPresenter.states.collect(collector: Kotlinx_coroutines_coreFlowCollector, completionHandler:    )
-            
-//            { uiState, error in
-//                if(let _uiState = uiState as? MainUiState){
-//                    self.text = _uiState?.launches?.first?.missionName  ?? ""
-//                }
-//            }
-//            getLaunchesUseCase.invoke { domainWrapper, error in
-//                print(domainWrapper.debugDescription)
-//                if let domainEntity = domainWrapper as? DomainWrapperEntity<RocketLaunchEntity> {
-//                    let rocketLaunches = domainEntity.data as? [RocketLaunchEntity]
-//
-//                    self.text = rocketLaunches?.first?.missionName  ?? ""
-//                }
-//            }
-//            SpacexService().getLaunches { rockets,error in
-//                DispatchQueue.main.async {
-//                    if let rockets = rockets {
-//
-//                        self.text =  rockets.first?.missionName ?? "no data found"
-//                    } else {
-//                      self.text = error?.localizedDescription ?? "error"
-//                    }
-//                }
-//            }
+        init() {
+            getLaunches()
+        }
+        
+        func getLaunches() {
+            mainActivityPresenter.postIntent(intent: IntentGetAllLaunches())
+            mainActivityPresenter.states.collect(collector: FlowCollector<MainUiState>(){ uiState in
+                if(!uiState.launches.isEmpty){
+                    self.text = uiState.launches.first!.missionName
+                }
+            }) { err in
+                if let error = err {
+                    self.text = error.localizedDescription
+                   }
+            }
+           
         }
     }
 }
-
-//
-//class ParentType<T> where T:Any{
-//    var data :T?
-//}
-//
-//var p = ParentType<[String]>()
-//p.data = ["Arindom", "Raj"]
-//
-//print(p.data)
-
