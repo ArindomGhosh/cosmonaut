@@ -29,10 +29,10 @@ extension ContentView {
         @Published var text = "Loading..."
         
         private var cancellables = [AnyCancellable]()
-        
+    
         init() {
             doPublish(mainActivityPresenter.flowAdapter(flow: mainActivityPresenter.sideEffects)){[weak self] sideEffect in
-                if sideEffect != nil {
+                if let se = sideEffect as? SideEffect {
                     // handle sideEffects
                 }
             }.store(in: &cancellables)
@@ -50,7 +50,6 @@ extension ContentView {
         
         private func getLaunches() {
             mainActivityPresenter.postIntent(intent: IntentGetAllLaunches())
-            
             doPublish(mainActivityPresenter.flowAdapter(flow: mainActivityPresenter.states)){ [weak self] uiState in
                 if(uiState.loading){
                     self?.text = "Loading ....."

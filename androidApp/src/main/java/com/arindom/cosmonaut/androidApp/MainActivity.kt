@@ -17,9 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.arindom.cosmonaut.presentation.Intent
-import com.arindom.cosmonaut.presentation.MainActivityPresenter
-import com.arindom.cosmonaut.presentation.SideEffect
+import com.arindom.cosmonaut.feature.spacexlaunches.presentation.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Composable

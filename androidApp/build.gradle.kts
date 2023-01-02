@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
+    implementation(project(":kmm:shared"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)
     implementation(libs.androidx.activity.compose)

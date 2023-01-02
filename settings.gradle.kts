@@ -4,6 +4,7 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
+    includeBuild("build-logic")
 }
 
 dependencyResolutionManagement {
@@ -13,8 +14,12 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("VERSION_CATALOGS")
 rootProject.name = "Cosmonaut"
 include(":androidApp")
-include(":shared")
-
-enableFeaturePreview("VERSION_CATALOGS")
+include(":kmm:spacex")
+include(":kmm:core:route")
+include(":kmm:core:common")
+include(":kmm:core:network")
+include(":kmm:shared")
+include(":kmm:features:spaceXLaunches")

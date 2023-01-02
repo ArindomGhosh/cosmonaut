@@ -1,12 +1,11 @@
 //
-//  FlowUtil.swift
+//  FlowUtill.swift
 //  iosApp
 //
-//  Created by Arindom Ghosh on 23/12/22.
+//  Created by Arindom Ghosh on 30/12/22.
 //  Copyright © 2022 orgName. All rights reserved.
 //
 
-import Foundation
 import shared
 
 class FlowCollector<T>:Kotlinx_coroutines_coreFlowCollector{
@@ -15,7 +14,7 @@ class FlowCollector<T>:Kotlinx_coroutines_coreFlowCollector{
     init(callback: @escaping (T) -> Void) {
         self.callback = callback
     }
-    
+
     func emit(value: Any?, completionHandler: @escaping (Error?) -> Void) {
         // do whatever you what with the emitted value
         callback(value as! T)
@@ -28,5 +27,5 @@ class FlowCollector<T>:Kotlinx_coroutines_coreFlowCollector{
         // passing an error object will throw a NSGenericException in kotlin code, which can be handled or your app will crash
         completionHandler(nil)
     }
-    
+
 }
