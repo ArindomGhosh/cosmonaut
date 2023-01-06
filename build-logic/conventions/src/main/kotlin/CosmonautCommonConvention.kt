@@ -9,14 +9,12 @@ class CosmonautCommonConvention : Plugin<Project> {
             pluginManager.apply {
                 apply<CosmonautMultiplatformConvention>()
             }
-
             extensions.configure<KotlinMultiplatformExtension>() {
                 android()
 
                 iosX64()
                 iosArm64()
                 iosSimulatorArm64()
-
             }
         }
     }

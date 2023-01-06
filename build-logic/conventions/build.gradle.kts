@@ -20,5 +20,14 @@ gradlePlugin {
             id = "cosmonaut.kmm.multiplatform"
             implementationClass = "CosmonautMultiplatformConvention"
         }
+
+        register("CosmonautComposeApplicationConvention"){
+            id = "cosmonaut.compose.application"
+            implementationClass ="CosmonautComposeApplication"
+        }
+        register("CosmonautApplicationConvention"){
+            id = "cosmonaut.application"
+            implementationClass ="CosmonautApplicationConvention"
+        }
     }
 }

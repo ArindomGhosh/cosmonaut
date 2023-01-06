@@ -1,6 +1,5 @@
 plugins {
     id("cosmonaut.kmm.multiplatform")
-    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
