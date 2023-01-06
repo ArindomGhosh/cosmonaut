@@ -1,21 +1,8 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    id("cosmonaut.kmm.common")
 }
 
 kotlin {
-    android()
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "network"
-        }
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -61,11 +48,5 @@ kotlin {
 }
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     namespace = "com.arindom.cosmonaut.core.network"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-    }
 }

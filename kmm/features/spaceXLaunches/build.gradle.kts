@@ -1,29 +1,16 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    id("cosmonaut.kmm.common")
     alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
-    android()
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
-        }
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(project(":kmm:spacex"))
-                api(libs.koin.core)
+                implementation(libs.koin.core)
             }
         }
         val commonTest by getting {
@@ -62,11 +49,5 @@ kotlin {
 }
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     namespace = "com.arindom.cosmonaut.feature.spacexlaunches"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-    }
 }
